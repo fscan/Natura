@@ -89,7 +89,7 @@ public class BaseTreeWorldgen implements IWorldGenerator
                 eucalyptusShort.generate(world, random, xSpawn, ySpawn, zSpawn);
             }
         }
-        if (biomeName == "Plains" || biomeName == "Meadow")
+        if (biomeName == "Forest" || biomeName == "AutumnWoods" || biomeName == "Rainforest" || biomeName == "Woodlands")
         {
             if (!retrogen && PHNatura.generateRedwood && random.nextInt(PHNatura.redwoodSpawnRarity) == 0)
             {
@@ -97,6 +97,18 @@ public class BaseTreeWorldgen implements IWorldGenerator
                 zSpawn = zPos + random.nextInt(16);
                 genRedwood.generate(world, random, xSpawn, PHNatura.seaLevel + 16, zSpawn);
             }
+        }
+        if (biomeName.toUpperCase().contains("REDWOOD"))
+        {
+            if (!retrogen && PHNatura.generateRedwood && random.nextInt((int) (PHNatura.redwoodSpawnRarity * 0.25)) == 0)
+            {
+                xSpawn = xPos + random.nextInt(16);
+                zSpawn = zPos + random.nextInt(16);
+                genRedwood.generate(world, random, xSpawn, PHNatura.seaLevel + 16, zSpawn);
+            }        	
+        }
+        if (biomeName == "Plains" || biomeName == "Meadow")
+        {
             if (PHNatura.generateSmallEucalyptus && random.nextInt((int) (PHNatura.eucalyptusShortSpawnRarity * 1.5)) == 0)
             {
                 xSpawn = xPos + random.nextInt(16);
